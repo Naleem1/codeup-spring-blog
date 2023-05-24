@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee</title>
+</head>
+<body>
+
+<h1>Coffee</h1>
+
+<h2>Whats your favorite roast</h2>
+
+<ul>
+
+    <li><a href="/coffee/dark">Dark</a></li>
+
+    <li><a href="/coffee/medium">Medium</a></li>
+
+    <li><a href="/coffee/light">Light</a></li>
+
+</ul>
+
+<h2 th:if="${roast}">
+    <!--            <p> You selected <span th:text="${roast}"></span> roast!</p>-->
+    <p> You selected [[${roast}]] roast!</p>
+</h2>
+<div>
+    <h2>Sign up for our newsLetter!</h2>
+        <form action="/coffee" method="post">
+            <label for="email">Your Email</label>
+            <input type="email" name="email" id="email">
+            <button type="submit">Sign up</button>
+        </form>
+</div>
+
+
+
+</body>
+</html>
