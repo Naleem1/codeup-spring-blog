@@ -3,6 +3,23 @@ package com.codeup.codeupspringblog.models;
 public class Coffee {
 
     private String roast;
+
+    public void setRoast(String roast) {
+        this.roast = roast;
+    }
+
+    public String getRoast() {
+        return roast;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
     private String origin;
     public Coffee() {
     }
@@ -15,4 +32,5 @@ public class Coffee {
         this.origin = origin;
 
     }
+
 }

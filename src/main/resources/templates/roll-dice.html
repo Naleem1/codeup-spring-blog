@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll Dice</title>
+</head>
+<body>
+
+<h1>Guess a Number:</h1>
+<form method="get" action="/roll-dice/{guess}">
+    <input type="number" name="guess" min="1" max="6" required>
+    <button type="submit">Roll Dice</button>
+</form>
+
+<h2>Result:</h2>
+<p>Your guess: <strong th:text="${guess}"></strong></p>
+<p>The dice rolled: <strong th:text="${diceRoll}"></strong></p>
+<p><strong th:text="${message}"></strong></p>
+</body>
+</html>

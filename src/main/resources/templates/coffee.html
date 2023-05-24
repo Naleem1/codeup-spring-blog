@@ -11,11 +11,8 @@
 <h2>Whats your favorite roast</h2>
 
 <ul>
-
     <li><a href="/coffee/dark">Dark</a></li>
-
     <li><a href="/coffee/medium">Medium</a></li>
-
     <li><a href="/coffee/light">Light</a></li>
 
 </ul>
@@ -31,6 +28,7 @@
             <input type="email" name="email" id="email">
             <button type="submit">Sign up</button>
         </form>
+    <h3 th:if="${email}">Thanks for singing up! We'll send the newsletter to [[${email}]]</h3>
 </div>
 
 
