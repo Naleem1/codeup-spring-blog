@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns: th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Roll Dice</title>
 </head>
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
 
 <h1>Guess a Number:</h1>
 <form method="get" action="/roll-dice/{guess}">
     <input type="number" name="guess" min="1" max="6" required>
-    <button type="submit">Roll Dice</button>
+    <input type="submit" value="Roll Dice">
 </form>
+<!--<ul>-->
+<!--    <li><a href="/roll-dice/1" th:name="guess">1</a></li>-->
+<!--    <li><a href="/roll-dice/2" th:name="guess">2</a></li>-->
+<!--    <li><a href="/roll-dice/3" th:name="guess">3</a></li>-->
+<!--    <li><a href="/roll-dice/4" th:name="guess">4</a></li>-->
+<!--    <li><a href="/roll-dice/5" th:name="guess">5</a></li>-->
+<!--    <li><a href="/roll-dice/6" th:name="guess">6</a></li>-->
+
+<!--</ul>-->
 
 <h2>Result:</h2>
 <p>Your guess: <strong th:text="${guess}"></strong></p>

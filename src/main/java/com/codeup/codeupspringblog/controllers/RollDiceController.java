@@ -15,11 +15,10 @@ public class RollDiceController {
     }
 
     @GetMapping("/roll-dice/{guess}")
-    public String rollDice(@PathVariable int guess, Model model) {
-        int diceRoll = rollDice();
+    public String rollDice(@RequestParam(name="guess") String guess, Model model) {
         model.addAttribute("guess", guess);
-        model.addAttribute("diceRoll", diceRoll);
-        model.addAttribute("message", getMessage(guess, diceRoll));
+        model.addAttribute("diceRoll", rollDice());
+        model.addAttribute("message", getMessage(Integer.parseInt(guess), rollDice()));
         return "roll-dice";
     }
 
@@ -32,7 +31,7 @@ public class RollDiceController {
         if (guess == diceRoll) {
             return "Congratulations! You guessed correctly!";
         } else {
-            return "Oops! The dice rolled " + diceRoll + ". Better luck next time!";
+            return "rolled " + diceRoll + ". Better luck next time!";
         }
     }
 }
