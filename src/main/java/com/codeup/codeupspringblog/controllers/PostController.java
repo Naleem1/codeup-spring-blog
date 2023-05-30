@@ -1,32 +1,40 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.repository.PostRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
     @GetMapping("/posts")
-    @ResponseBody
-    public String allPosts() {
-        return "post index page";
+    public String allPosts(Model model) {
+        model.addAttribute("posts", postDao.findAll());
+        return "/posts/index";
     }
 
     @GetMapping("/posts/{id}")
     @ResponseBody
-    public String individualPost(@PathVariable String id) {
-        return "view individual post";
+    public String individualPost(@PathVariable int id) {
+        return "/posts/index";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
     public String viewPost() {
-        return "view the form for creating a post";
+        return "/posts/create";
     }
 
     @RequestMapping(path="/posts/create", method= RequestMethod.POST)
-    @ResponseBody
-    public String createPost() {
-        return "create a new post";
+    public String createPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
+        Post post = new Post(title,body);
+        postDao.save(post);
+        return "/posts/index";
     }
 
 
