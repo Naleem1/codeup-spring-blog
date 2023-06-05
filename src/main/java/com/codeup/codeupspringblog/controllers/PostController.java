@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
-    private final PostRepository postDao;
+    private PostRepository postDao;
+
 
     public PostController(PostRepository postDao) {
         this.postDao = postDao;
@@ -16,6 +17,7 @@ public class PostController {
     @GetMapping("/posts")
     public String allPosts(Model model) {
         model.addAttribute("posts", postDao.findAll());
+        postDao.findAll();
         return "/posts/index";
     }
 
